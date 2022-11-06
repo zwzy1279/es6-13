@@ -1,0 +1,19 @@
+<script>
+    /*
+        什么是浅层拷贝：就是指只拷贝地址值，将地址值赋值给新声明的变量。当新声明的变量属性值发生变化时，原来的对象也会发生相对应变化。因为两个对象都指向同一个堆
+        深层拷贝：指整个内容都拷贝给新声明的变量，新声明的变量指向堆中一个新的堆区域
+    */
+   let obj={
+    usname:"zs",
+    age:12
+   };
+   console.log(obj);//{usname: 'zs', age: 12}
+   let newObj=obj;
+   newObj.age=22;
+   console.log(obj);//{usname: 'zs', age: 22}
+
+ //JSON.parse(JSON.stringify(obj))来实现深层拷贝
+ let newObj2=JSON.parse(JSON.stringify(obj));
+ newObj2.usname="lh";
+ console.log(obj);//{usname: 'zs', age: 22}改变新的对象，不会改变原来的对象，实现了深拷贝
+</script>

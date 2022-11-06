@@ -1,0 +1,29 @@
+<script>
+    /*
+    运算符是三个点...对象或者数组变量，一般分为展开运算符和rest运算符
+    展开运算符一般写在函数的实际参数里或者赋值号的右边
+    展开运算符可以将整个数组取出来里面的元素，并用逗号隔开的序列
+
+    rest运算符一般卸载函数的形式参数或者赋值号的左边
+    rest运算符一般
+
+    */
+   //展开运算符
+   let arr=[11,22,33];
+//    function fn(a,b,c){
+//     console.log(a+b+c);
+//    }
+//    //fn(arr);////11,22,33undefinedundefined
+//    fn(...arr);//66
+
+   //rest运算符
+   function fn1(...arr){
+    let sum=0;
+    for(let i=0;i<arr.length;i++){
+        sum=sum+arr[i];
+    }
+    console.log(sum);
+   }
+  // fn1(arr);//011,22,33
+  fn1(11,22,33);//66
+</script>

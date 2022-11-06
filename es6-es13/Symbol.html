@@ -1,0 +1,54 @@
+<script>
+    /*
+    Symbol是一个函数，是一个类
+    可以直接调用他来得到一个唯一的值，每次的Symbol()得到的值都是不一样的
+    可以用来确定对象中属性名命名冲突的情况
+    调用函数Symbol()返回的类型是symbol类型的
+    */
+   console.log(typeof Symbol());//symbol
+   let s1=Symbol();
+   let s2=Symbol();
+   console.log(s1,s2);
+   console.log(s1==s2);
+   //可以在调用Symbol()函数时，向里面传参作为标识符
+   let s3=Symbol("s3");
+   console.log(s3);
+
+   let obj={};
+   function fn1(){
+    obj.age=10;
+    console.log("f1调用的"+obj.age);//10
+   }
+   function fn2(){
+    obj.age=11;
+    console.log("f2调用的"+obj.age);//11
+   }
+   fn1();
+   fn2();
+   //重新打印一遍对象的值，看看最终的age是多少
+   console.log(obj.age);//11//最终取的值会被最后一个值所覆盖
+
+   //这个时候在应用Symbol()
+   //对象中的键如果是一个变量时，需要用[]方括号给引起来
+   let obj2={};
+   let s4=Symbol();
+   function fn3(){
+    //obj2.Symbol()=10;//对象中的键如果是一个变量时，需要用[]方括号给引起来
+    //obj2[Symbol("s1")]=10;
+    //console.log(obj2[Symbol("s1")]);//undefined//这里显然不能再Symbol()来调用，因为每次一调用都是一个新的值，唯一的值,即使标识符一样也是不一样的值
+    //所以需要另外的一个变量来接收这个值，为了方便使用时能够调用
+    
+    obj2[s4]=14;
+   }
+   let s5=Symbol();
+   function fn4(){
+    //obj2.Symbol()=11;
+    //obj2[Symbol()]=11;
+    obj2[s5]=15;
+   }
+   fn3();
+   fn4();
+   console.log(obj2);//{Symbol(): 10, Symbol(): 11}
+   //{Symbol(): 14, Symbol(): 15}
+   
+</script>

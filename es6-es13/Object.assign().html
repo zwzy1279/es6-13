@@ -1,0 +1,18 @@
+<script>
+    /*
+Object.assign()可以将两个或者多个对象的属性合成给另外一个对象
+当属性出现一样名时，会被后面的覆盖掉
+    */
+   let obj={
+    a:1,
+    b:2
+   };
+   let obj2={
+    c:3,
+    d:4,
+    a:5
+   }
+   let obj3={};
+   Object.assign(obj3,obj,obj2)
+   console.log(obj3);
+</script>

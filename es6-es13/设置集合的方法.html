@@ -1,0 +1,97 @@
+<!--<script>
+    /*
+    集合有[],{}
+    以前设置一个集合的方法是通过字面量的形式
+    let a={};
+    let b=[];
+
+    现在有四种设置集合的方法，分两类
+    1.Set作为一个类来new使用
+     
+    */
+   let s=new Set();
+   //可以调用add方法来进行增加属性。并返回原有结构
+   s.add(1);
+   s.add(2);
+   s.add(3);
+   console.log(s);
+   //还可以清除什么的
+
+   //往new Set()传一个数组作为参数，会自动过滤掉重复的元素，返回过滤掉重复的元素的对象
+   let arr=[1,2,3,1,2,1,3,3,4,5,6,4,4];
+   let result=new Set(arr);
+   console.log(result);//{1, 2, 3, 4, 5, …}
+   //这个对象可以通过
+    let r=Array.from(result);//来返回一个数组
+    console.log(r);//[1, 2, 3, 4, 5, 6]
+</script>-->
+
+<!--<script>
+    /*
+    WeakSet()弱引用，也只能通过new来使用
+    weakSet()和Set()的区别
+    WeakSet()传递的只能是对象，不能是其他类型的数据
+    对元素的引用只能是弱引用，再合适的实际会自动消除。不会像一般对象那样，当有其他引用时，即使他的元素发生变化，但在引用的地方永远是不变的
+
+    */
+   let weak=new WeakSet();
+//    weak.add(1);
+//    weak.add(2);
+//    console.log(weak);//Uncaught TypeError报错，传递的只能是对象
+weak.add({name:"wc"});
+weak.add({age:19});
+console.log(weak);
+
+let obj1={name:"ww"};
+let obj2={age:12};
+let arr=[obj1,obj2];
+console.log(arr);
+obj1=null;
+console.log(arr);//跟原来的一样，并不会发生变化
+
+let obj3={name:"ww"};
+let obj4={age:12};
+let weak2=new WeakSet();
+weak2.add(obj3);
+weak2.add(obj4);
+console.log(weak2);
+obj3=null;
+console.log(weak2);
+</script>-->
+
+<!--<script>
+    /*
+    Map()的使用也是通过new
+    得到的也是一个集合
+    */
+   let m=new Map();
+   let obj={name:"qq",age:15};
+   let obj2={salary:14000};
+   m.set(obj,{name:"wc",age:22});//添加设置元素
+   m.set(obj2,{salary:150000});
+   //m.set(2);
+   //m.set({name:"wc"})
+   //m.set("键的名字","键值")；
+//    m.set("name","ww");
+//    m.set("age",11);
+console.log(m);
+   console.log(m.get(obj));//各道元素的值
+   //可以遍历
+//    m.forEach(item=>{
+//     console.log(item);
+//    })
+   for(let item  of m){//item为整一个元素
+    let[key,value]=item;//取出每一个元素的键和值
+    console.log(key+"="+value);
+   }
+   
+</script>-->
+
+<script>
+/*
+WeakMap()也是只能new使用，他和Map()有以下的区别
+1.WeakMap()传递的跟WeakSet()一样，只能传递对象，其他类型不能传递
+2.WeakMap()也只能弱引用，不能阻止结果不发生变化
+3.同样也不能遍历
+*/
+</script>

@@ -1,0 +1,43 @@
+<script>
+    /*
+        class来使用一个类，当new这个类时，构造器会自动生成一个constructor的方法，里面可以传进去参数
+        当加上static的方法和属性，只能通过构造器，也就是类名来调用这个方法
+        当子类继承父类时，子类可以使用父类的公有方法和属性，调用父类用super()
+        当继承时，子类要是重写了父类中已经有的方法，在调用的方法会使用自己子类的
+    */
+   class Person{
+    constructor(name,age){
+        this.name=name;
+        this.age=age;
+        this._address="gz"
+    }
+    get address(){//访问的时候会走
+        console.log("触发到访问器了");
+        return this._address;
+    }
+    set address(value){
+        console.log("出发到设置器了");
+    }
+    canCry(){
+        console.log("人可以叫");
+    }
+    static sayHello(){
+        console.log("hello es");
+    }
+   }
+   class Student extends Person{
+    constructor(name,age,className){
+        // this.name=name;
+        // this.age=age;
+        super(name,age);
+        this.className=className;
+    }
+   }
+   let s=new Student("ww",11,"soft");
+   s.canCry();
+//    let p=new Person("wc",22);
+//    console.log(p.age);
+//    //报错p.sayHello();
+//    Person.sayHello();//hello es,静态方法只能通过
+//    console.log(p._address);
+</script>

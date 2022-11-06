@@ -1,0 +1,59 @@
+<script>
+    /*
+    ES7新增API
+    1.includes
+    以前我们判断一个数组中是否包含什么元素用的是 arr.indexOf("name");//没有的话返回-1，有的话返回0
+    现在新增这一种，arr.includes("name")  //有的话返回true，没有的话返回false
+
+    2.新增指数运算符
+    以前求2的3次方用 Math.pow(2,3)
+    现在用2**3
+    */
+   let arr=["wc","qq","kj"];
+   console.log(arr.indexOf("jj"));//-1
+   console.log(arr.indexOf("wc"));//0
+
+   console.log(arr.includes("jj"));
+   
+   console.log(Math.pow(2,3));
+   console.log(2**3);
+
+   /*
+    ES8新增的API
+    以前求对象中的所有键为 Object.keys(obj)
+    现在新增
+    1.求对象中所有键的值
+    Object.values(obj)
+    2.求对象中所有键值对的值
+    Object.entries(obj)
+
+    3.字符串的padding 
+    以前截取数组的方法 slice  arr.slice(0,3);//左包含右不包含
+    4.esync函数
+   */
+  let obj={name:"wc",
+  age:11,
+  className:"soft"};
+  console.log(Object.keys(obj));
+  console.log(Object.values(obj));
+  console.log(Object.entries(obj));
+
+  let h="hello";
+  console.log(h.slice(0,3))//hel
+  console.log(h.padStart(10,"*"));//*****hello
+  console.log(h.padEnd(10,0));//hello00000
+
+/*
+ES9迭代器
+ES10
+ 1.arr.flat()多维数组进行打平的方法
+ 2.map()加工的
+ 3.查询字符串
+*/
+let arr2=[[1,2],[3,4],[5,6]];
+console.log(arr2.flat(1));//打成一维数组
+let stringa="?name=wc&className=soft&age=23";
+let r=new URLSearchParams(stringa);
+console.log(r);
+console.log(r.get("name"));//wc
+</script>

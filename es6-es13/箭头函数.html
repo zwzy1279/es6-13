@@ -1,0 +1,57 @@
+<script>
+    /*
+    箭头函数跟普通函数
+
+    普通函数
+    function fn(){
+        console.log("hello world");
+    }
+    fn();
+
+    var a=function(){
+        console.log("hello world");
+    }
+    a();
+
+    箭头函数
+    //去掉function,
+    ()中要是形参为空时，可以省略不写，
+    {}内要是只有return一条语句时。{}可以省略不写。
+    除非return 后面的是一个对象也有{}，那么如果要省略函数的大{}，就必须给返回的对象加上括号（）
+
+    箭头函数中this会在一般的this往上在找一层this
+    才是箭头函数的this
+    一般下定时器的this指向的是window
+
+    箭头函数在以下情形不能用
+    1.不要在new的情况下使用
+    2.没有原型对象
+    3.给原型对象添加方法，不要用箭头函数
+    这些情况都会出现this指向问题
+
+    */
+   var a=()=>{
+    console.log(this);//window
+    return 1;
+   }
+   console.log(a);
+   console.log(a());//1
+
+   let p={
+    getName:function(){
+        setTimeout(function(){
+        console.log(this);
+    },1000)//window
+    }
+   }
+   p.getName();
+
+   let p1={
+    getName:function(){
+        setTimeout(()=>{
+        console.log(this);
+    },1000)//{getName: ƒ}  p1
+    }
+   }
+   p1.getName();
+</script>

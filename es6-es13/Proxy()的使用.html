@@ -1,0 +1,30 @@
+<script>
+    /*
+    Proxy也是作为一个函数，类来使用，通过new Proxy()来使用
+    创建得到一个新的对象，必须要有参数的，不然会报错，这个对象作为代理对象，里面参数有原本对象，有代理对象，代理对象里面可以设置访问监听器，这些监听器不会出现报栈的情况
+    除了get还有set的监听器，还有一些其他的，再一些特定的情况下会被触发
+    */
+    let obj={
+    uname:"浩浩",
+    age:24,
+    salary:"14k"
+  };
+   let newProxy=new Proxy(obj,{
+    get(target,key){
+        //target值得是元对象obj
+        //key指的是访问对象的属性，也就是键
+        //target[key]那么这个就是key这个属性的属性值
+        return target[key];
+    },
+    set(target,key,newValue){
+        //前两个参数同get的一样
+        //newValue指的是设置对象属性的属性值，设置的时候传过来的
+        //让此时的属性值变成这个新传来的值
+        target[key]=newValue;
+    }
+   });
+   //console.log(newProxy);报错
+   console.log(obj);
+   obj.name="张林浩";
+   console.log(obj.name);
+</script>

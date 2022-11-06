@@ -1,0 +1,36 @@
+<script>
+    /*
+    方法的简写
+
+    //一般对象中的方法
+    let p={
+        sayHello:function(){
+            console.log("hello world");
+        }
+    }
+    p.sayHello();
+
+    //对象中方法的简写
+    直接省去：function
+    let p={
+        sayHello(){
+            console.log("hello world");
+        }
+    }
+    p.sayHello();
+
+    //一般对象中属性的简写，可以直接写跟全局生命的变量一样名字的属性，它的值就是外面的值
+    */
+    let p={
+        sayHello(){
+            console.log("hello world");
+        }
+    }
+    p.sayHello();
+
+    let age=23;
+    let p1={
+        age
+    }
+    console.log(p1.age);//23
+</script>

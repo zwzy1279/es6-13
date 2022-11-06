@@ -1,0 +1,59 @@
+<script>
+    /*
+        结构赋值：数组的解构赋值，对象的解构赋值，字符串的解构赋值，函数形参的解构赋值
+        所有的结构赋值都是保证左右两边的类型相同
+
+        一：数组的解构赋值
+        //本来的数组如何得到所有的元素
+        let arr=["wc","jj","za"];
+        let name1=arr[0];
+        let name2=arr[1];
+        let name3=arr[2];
+
+        //现在除了原本获得数组中所有元素的方法，还有以下结构赋值的方法
+        //保证左右类型一致
+        let []=arr;
+        []里面写的是变量，这些变量给就对应右边数组中的每一个元素
+        要想获取右边数组的第二个元素，左边的变量应该怎么写呢。答：用逗号隔开再写一个变量，那么这个变量获取的就是右边数组的第二个元素了
+
+        二：对象的解构赋值
+         //保证左右类型一致
+         let {}=obj;
+         {}里面写的是属性名，必须是右边对象中的键的名字，不可以出现其他变量的名字除非是给键重新起个别名，这些变量给就对应右边数组中的每一个元素
+         给左边的变量起别名：变量:别名
+         当左边的变量首先会去配对右边对象的值，没有的话才会去匹配他的默认值
+         默认值  变量=值
+
+         三，字符串解构赋值
+         let [a,b,c,d]="Zeng";
+         console.log(a,b,c,d);
+
+         四.函数形参的结构赋值
+         在形参的基础上加上对象或者数组的结构赋值
+         function fn2([a1,b2]){
+            console.log(a1+b2);
+         }
+         fn2([22,33]);
+    */
+    let arr=["wc","jj","za"];
+    let [name1,name2,name3]=arr;
+    console.log(name3);//za
+
+    let obj={
+        uname:"zhanglinhao",
+        age:23
+    };
+    let {uname:myname,age=12}=obj;
+    console.log(myname);
+    //console.log(uname);//起别名后要用别名
+    console.log(age);
+
+    let [a,b,c,d]="Zeng";
+    console.log(a,b,c,d);// Z e n g
+
+    function fn2([a1,b2]){
+            console.log(a1+b2);
+         }
+         fn2([22,33]);
+    
+</script>

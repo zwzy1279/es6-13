@@ -1,0 +1,50 @@
+<script>
+    /*
+        Object.defineProperty(obj,"属性名",{value="属性值"});
+        一般是用来给某个特定的对象的属性进行设置属性值
+        它里面可以设置get()访问监听器和set()设置监听器
+        当访问对象的某个属性的时候。会触发get()监听器，会调用这个方法，这个方法返回的值会给到访问的地方
+        当给对象的某个属性的值进行设置时，会触发set()监听器
+    */
+   let obj={
+    name:"jj",
+    age:12
+   }
+   let newValue="wc";
+   Object.defineProperty(obj,"name",{
+    //value:"张林浩",//不需要再这里设置值，这里的值自然会通过get()来返回
+    
+    get(){
+        console.log("触发到get监听器了");
+        //return "wc";//可以没有返回值，这样他的返回值就为undefined
+        //return obj.name;//陷入死循环，因为一直在访问这个对象的属性
+        return newValue;
+    },
+    set(newVal){//外面给对象属性设置的新值会传给set()里的参数，也就是会给到newVal
+        console.log("触发到set监听器了，新值为"+newVal);
+//让上面set参数拿到的新值返回给get试试
+        newValue=newVal;
+    }
+   });
+   //obj.name="张三";
+   console.log(obj.name);
+   obj.name="张林浩";
+   console.log(obj.name);//这里的值不会变成我们新设置的，他一直都会是get()中return返回的值
+   //让上面set参数拿到的新值返回给get试试
+
+   /*
+   遍历对象中的键还有键对应的值
+   */
+  let obj2={
+    uname:"浩浩",
+    age:24,
+    salary:"14k"
+  };
+  //报错不是obj2.forEach(key,value);
+  //Object.keys(obj);
+  console.log(Object.keys(obj2));//['uname', 'age', 'salary']可以拿到obj2的所有键并返回一个数组
+  //一个数组，如何获取数组中的每一个元素，遍历数组中的元素
+  let arr=[1,2,3,4,5];
+   //arr.forEach(key);
+   //Object.keys(obj2).forEach(key)
+</script>
